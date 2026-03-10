@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Pretendard:wght@400;500;600;700;900&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Pretendard", sans-serif;
+  
+  --color-concrete-100: #e5e5e5;
+  --color-concrete-200: #d4d4d4;
+  --color-concrete-300: #a3a3a3;
+  --color-brutal-black: #171717;
+  --color-eco-green: #22c55e;
+  --color-eco-dark: #15803d;
+  --color-paper: #f4f4f0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-concrete-100);
+  color: var(--color-brutal-black);
+  /* Concrete texture overlay */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.brutal-border {
+  border: 3px solid var(--color-brutal-black);
+}
+
+.brutal-shadow {
+  box-shadow: 6px 6px 0px 0px var(--color-brutal-black);
+  transition: all 0.2s ease;
+}
+
+.brutal-shadow:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px var(--color-brutal-black);
+}
+
+.brutal-shadow:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px 0px var(--color-brutal-black);
+}
+
+.brutal-shadow-sm {
+  box-shadow: 4px 4px 0px 0px var(--color-brutal-black);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes ellipsis {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+.animate-ellipsis::after {
+  content: '';
+  animation: ellipsis 1.5s infinite;
+  display: inline-block;
+  width: 1.5em;
+  text-align: left;
+}
